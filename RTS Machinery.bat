@@ -24,8 +24,11 @@ echo 4. Plot a Point
 echo 5. Attack a Point
 echo 6. Defend a Point
 echo 7. Build at a Point
-echo 8. Exit
-set /p choice=Enter your choice (1-8): 
+echo 8. Deny a Point
+echo 9. Enable RTS Bot
+echo 10. Disable RTS Bot
+echo 11. Exit
+set /p choice=Enter your choice (1-11): 
 
 if "%choice%"=="1" goto translate
 if "%choice%"=="2" goto rotate
@@ -34,7 +37,10 @@ if "%choice%"=="4" goto plot
 if "%choice%"=="5" goto attack
 if "%choice%"=="6" goto defend
 if "%choice%"=="7" goto build
-if "%choice%"=="8" goto end
+if "%choice%"=="8" goto deny
+if "%choice%"=="9" goto enable_bot
+if "%choice%"=="10" goto disable_bot
+if "%choice%"=="11" goto end
 goto menu
 
 :translate
@@ -139,6 +145,30 @@ set /p bd=Enter d coordinate of the point to build:
 :: Build at the point
 echo Building at point coordinates: (%bx%, %by%, %bz%, %ba%, %bb%, %bc%, %bd%)
 echo Building at point coordinates: (%bx%, %by%, %bz%, %ba%, %bb%, %bc%, %bd%) >> coordinates_log.txt
+goto menu
+
+:deny
+set /p dx=Enter x coordinate of the point to not deny: 
+set /p dy=Enter y coordinate of the point to not deny: 
+set /p dz=Enter z coordinate of the point to not deny: 
+set /p da=Enter a coordinate of the point to not deny: 
+set /p db=Enter b coordinate of the point to not deny: 
+set /p dc=Enter c coordinate of the point to not deny: 
+set /p dd=Enter d coordinate of the point to not deny: 
+
+:: Deny the point
+echo Not denying point coordinates: (%dx%, %dy%, %dz%, %da%, %db%, %dc%, %dd%)
+echo Not denying point coordinates: (%dx%, %dy%, %dz%, %da%, %db%, %dc%, %dd%) >> coordinates_log.txt
+goto menu
+
+:enable_bot
+echo Enabling RTS Bot...
+:: Add code to enable RTS Bot here
+goto menu
+
+:disable_bot
+echo Disabling RTS Bot...
+:: Add code to disable RTS Bot here
 goto menu
 
 :end
